@@ -36,6 +36,11 @@ app.use(session({
 //flash is middleware that is called my req.flash()
 app.use(flash());
 
+//this 3 lines must appear AFTER your session is configured, it has to know your session exists
+var passport = require('./config/ppConfig');
+app.use(passport.initialize());
+app.use(passport.session());
+
 //use flash
 app.use(function(req, res, next) {
   // before every route, attach the flash messages and current user to res.locals
@@ -43,12 +48,6 @@ app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
-
-//this 3 lines must appear AFTER your session is configured, it has to know your session exists
-var passport = require('./config/ppConfig');
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 /////////routes/////////////////
 

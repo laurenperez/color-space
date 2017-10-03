@@ -25,7 +25,7 @@ router.post('/signup', function(req, res) {
   }).spread(function(user, created) {
     if (created) {
       passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/profile',
         successFlash: 'Account created and logged in'
       })(req, res);
     } else {
@@ -48,13 +48,13 @@ router.get('/login', function(req, res) {
 
 //added flash to let user know if they successfully logged in or not
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/profile',
   failureRedirect: '/auth/login',
   successFlash: 'You have logged in',
   failureFlash: 'Invalid username and/or password'
 }));
 
-//added flash to let user knoe they logged out
+//added flash to let user know they logged out
 router.get('/logout', function(req, res) {
   req.logout();
   req.flash('success', 'You have logged out');
