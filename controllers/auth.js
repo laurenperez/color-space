@@ -5,7 +5,7 @@ var passport = require('../config/ppConfig');
 
 
 
-//////////routes////////////
+////////// routes ////////////
 
 
 router.get('/signup', function(req, res) {
@@ -26,7 +26,7 @@ router.post('/signup', function(req, res) {
     if (created) {
       passport.authenticate('local', {
         successRedirect: '/profile',
-        successFlash: 'Account created and logged in'
+        successFlash: 'Account created you are logged in'
       })(req, res);
     } else {
       // if not created, the email already exists
@@ -41,10 +41,10 @@ router.post('/signup', function(req, res) {
 });
 
 
-
 router.get('/login', function(req, res) {
   res.render('auth/login');
 });
+
 
 //added flash to let user know if they successfully logged in or not
 router.post('/login', passport.authenticate('local', {
@@ -53,6 +53,7 @@ router.post('/login', passport.authenticate('local', {
   successFlash: 'You have logged in',
   failureFlash: 'Invalid username and/or password'
 }));
+
 
 //added flash to let user know they logged out
 router.get('/logout', function(req, res) {

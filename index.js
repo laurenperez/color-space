@@ -59,6 +59,14 @@ app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile');
 });
 
+app.get('/space', isLoggedIn, function(req, res) {
+  res.render('show');
+});
+
+app.get('/new', isLoggedIn, function(req, res) {
+  res.render('new');
+});
+
 app.use('/auth', require('./controllers/auth'));
 
 var server = app.listen(process.env.PORT || 3000);
