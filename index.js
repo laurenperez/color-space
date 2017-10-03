@@ -1,8 +1,13 @@
 require('dotenv').config();
 //this reads .env file and sticks that setting into our environment
 var express = require('express');
+var multer = require('multer');
+//allows us to make a multipart form
+var upload = multer({dest: './uploads/'});
+var cloudinary = require('cloudinary');
 var ejsLayouts = require('express-ejs-layouts');
 var bodyParser = require('body-parser');
+var fs = require('fs');
 var app = express();
 
 var session = require('express-session');
@@ -20,7 +25,7 @@ app.use(ejsLayouts);
  * setup the session with the following:
  *
  * secret: A string used to "sign" the session ID cookie, which makes it unique
- * from application to application. We'll hide this in the environment
+ * from application to application. Hidden in the .env.
  *
  * resave: Save the session even if it wasn't modified. We'll set this to false
  *
@@ -59,15 +64,11 @@ app.get('/profile', isLoggedIn, function(req, res) {
   res.render('profile');
 });
 
-app.get('/space', isLoggedIn, function(req, res) {
-  res.render('show');
-});
-
-app.get('/new', isLoggedIn, function(req, res) {
-  res.render('new');
-});
 
 app.use('/auth', require('./controllers/auth'));
+app.use('/spaces', require('./controllers/spaces'));
+
+
 
 var server = app.listen(process.env.PORT || 3000);
 
