@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var space = sequelize.define('space', {
-    room: DataTypes.STRING,
+    name: DataTypes.STRING,
     url: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {

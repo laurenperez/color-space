@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      room: {
+      name: {
         type: Sequelize.STRING
       },
       url: {
