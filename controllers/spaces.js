@@ -12,15 +12,28 @@ var isLoggedIn = require('../middleware/isLoggedIn');
 
 var images = [];
 
+
+/////// THIS IS DONE DONT TOUCH IT ///////
 router.get('/', isLoggedIn, function(req, res) {
+  res.render('spaces/profile');
+});
+
+
+router.get('/:id', isLoggedIn, function(req, res) {
+  //get room name by id or name and get data
+  //pass data into api nd get back data
+  //dend that data as a render obj
   res.render('spaces/show', {images, cloudinary});
 });
 
+
+
+/////// THIS IS DONE DONT TOUCH IT ///////
 router.get('/new', isLoggedIn, function(req, res) {
   res.render('spaces/new');
 });
 
-
+/////// THIS IS DONE DONT TOUCH IT ///////
 router.post('/', upload.single('myImage'), function(req, res){
   cloudinary.uploader.upload(req.file.path, function(result){
     images.push(result.public_id);

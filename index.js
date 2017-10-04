@@ -54,14 +54,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-/////////routes/////////////////
+///////// routes /////////////////
 
 app.get('/', function(req, res) {
   res.render('index');
-});
-
-app.get('/profile', isLoggedIn, function(req, res) {
-  res.render('profile');
 });
 
 
