@@ -1,5 +1,6 @@
 require('dotenv').config();
 var express = require('express');
+var request = require('request')
 var router = express.Router();
 var db = require('../models');
 var bodyParser = require('body-parser');
@@ -55,7 +56,7 @@ router.get('/new', isLoggedIn, function(req, res) {
 });
 
 
-///// WORK ON THIS NEXT /////
+/////// THIS IS DONE BUT IT IS VERY SLOW ///////
 router.get('/:name', isLoggedIn, function(req, res) {
   db.space.findOne({
     where: {
@@ -65,9 +66,13 @@ router.get('/:name', isLoggedIn, function(req, res) {
   }).then(function(space){
     var spaceUrl = space.url;
     var url = spaceUrl.substring(8);
-    console.log(url);
-    //pass data into api and get back data
-    res.render('spaces/show', {space: space});
+    var specialParams = "&precision=medium&json=1";
+    var colorApiUrl = "http://mkweb.bcgsc.ca/color-summarizer/?url=" + url + specialParams;
+    request(colorApiUrl, function(error, response, body) {
+      var colorData = JSON.parse(body).clusters;
+      console.log(colorData);
+      res.render('spaces/show', {space: space},);
+    });
   });
 });
 

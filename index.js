@@ -1,6 +1,7 @@
 require('dotenv').config();
 //this reads .env file and sticks that setting into our environment
 var express = require('express');
+var request = require('request');
 var multer = require('multer');
 //allows us to make a multipart form
 var upload = multer({dest: './uploads/'});
