@@ -8,14 +8,29 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      rgb: {
-        type: Sequelize.STRING
+      r: {
+        type: Sequelize.INTEGER
+      },
+      g: {
+        type: Sequelize.INTEGER
+      },
+      b: {
+        type: Sequelize.INTEGER
       },
       hex: {
         type: Sequelize.STRING
       },
-      cmyk: {
-        type: Sequelize.STRING
+      c: {
+        type: Sequelize.INTEGER
+      },
+      m: {
+        type: Sequelize.INTEGER
+      },
+      y: {
+        type: Sequelize.INTEGER
+      },
+      k: {
+        type: Sequelize.INTEGER
       },
       spaceId: {
         type: Sequelize.INTEGER

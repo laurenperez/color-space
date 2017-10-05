@@ -1,9 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var color = sequelize.define('color', {
-    rgb: DataTypes.STRING,
+    r: DataTypes.INTEGER,
+    g: DataTypes.INTEGER,
+    b: DataTypes.INTEGER,
     hex: DataTypes.STRING,
-    cmyk: DataTypes.STRING,
+    c: DataTypes.INTEGER,
+    m: DataTypes.INTEGER,
+    y: DataTypes.INTEGER,
+    k: DataTypes.INTEGER,
     spaceId: DataTypes.INTEGER
   }, {
     classMethods: {

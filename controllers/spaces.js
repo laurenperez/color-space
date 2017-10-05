@@ -16,7 +16,7 @@ var images = [];
 var colorData = null;
 var spaceId;
 
-/////// THIS IS DONE DONT TOUCH IT ///////
+/////// view user profile page ///////
 router.get('/', isLoggedIn, function(req, res) {
   db.space.findAll({
     where: {
@@ -28,7 +28,7 @@ router.get('/', isLoggedIn, function(req, res) {
 });
 
 
-/////// THIS IS DONE DONT TOUCH IT ///////
+/////// upload image to cloudinary and save its url to db ///////
 router.post('/', upload.single('myImage'), function(req, res){
   cloudinary.uploader.upload(req.file.path, function(result){
     images.push(result.public_id);
@@ -47,80 +47,113 @@ router.post('/', upload.single('myImage'), function(req, res){
           });
         });
       });
-    res.redirect('/');
+    res.redirect('/spaces/profile');
   });
 });
 
 
-/////// THIS IS DONE DONT TOUCH IT ///////
+/////// page with form to create a new space ///////
 router.get('/new', isLoggedIn, function(req, res) {
   res.render('spaces/new');
 });
 
 
+
+///// color values from the API are inserted into colors table /////
 function color0(callback) {
   db.color.findOrCreate({
     where: {
-      rgb: colorData['0'].rgb,
-      hex: colorData['0'].hex,
-      cmyk: colorData['0'].cmyk,
+      r: colorData['0'].rgb[0],
+      g: colorData['0'].rgb[1],
+      b: colorData['0'].rgb[2],
+      hex: colorData['0'].hex[0],
+      c: colorData['0'].cmyk[0],
+      m: colorData['0'].cmyk[1],
+      y: colorData['0'].cmyk[2],
+      k: colorData['0'].cmyk[3],
       spaceId: spaceId
     },
   }).spread(function(color, created){
     console.log(color);
   });
+  callback(null, "yay!");
 }
 function color1(callback) {
   db.color.findOrCreate({
     where: {
-      rgb: colorData['1'].rgb,
-      hex: colorData['1'].hex,
-      cmyk: colorData['1'].cmyk,
+      r: colorData['1'].rgb[0],
+      g: colorData['1'].rgb[1],
+      b: colorData['1'].rgb[2],
+      hex: colorData['1'].hex[0],
+      c: colorData['1'].cmyk[0],
+      m: colorData['1'].cmyk[1],
+      y: colorData['1'].cmyk[2],
+      k: colorData['1'].cmyk[3],
       spaceId: spaceId
     },
   }).spread(function(color, created){
     console.log(color);
   });
+  callback(null, "yay!");
 }
 function color2(callback) {
   db.color.findOrCreate({
     where: {
-      rgb: colorData['2'].rgb,
-      hex: colorData['2'].hex,
-      cmyk: colorData['2'].cmyk,
+      r: colorData['2'].rgb[0],
+      g: colorData['2'].rgb[1],
+      b: colorData['2'].rgb[2],
+      hex: colorData['2'].hex[0],
+      c: colorData['2'].cmyk[0],
+      m: colorData['2'].cmyk[1],
+      y: colorData['2'].cmyk[2],
+      k: colorData['2'].cmyk[3],
       spaceId: spaceId
     },
   }).spread(function(color, created){
     console.log(color);
   });
+  callback(null, "yay!");
 }
 function color3(callback) {
   db.color.findOrCreate({
     where: {
-      rgb: colorData['3'].rgb,
-      hex: colorData['3'].hex,
-      cmyk: colorData['3'].cmyk,
+      r: colorData['3'].rgb[0],
+      g: colorData['3'].rgb[1],
+      b: colorData['3'].rgb[2],
+      hex: colorData['3'].hex[0],
+      c: colorData['3'].cmyk[0],
+      m: colorData['3'].cmyk[1],
+      y: colorData['3'].cmyk[2],
+      k: colorData['3'].cmyk[3],
       spaceId: spaceId
     },
   }).spread(function(color, created){
     console.log(color);
   });
+  callback(null, "yay!");
 }
 function color4(callback) {
   db.color.findOrCreate({
     where: {
-      rgb: colorData['4'].rgb,
-      hex: colorData['4'].hex,
-      cmyk: colorData['4'].cmyk,
+      r: colorData['4'].rgb[0],
+      g: colorData['4'].rgb[1],
+      b: colorData['4'].rgb[2],
+      hex: colorData['4'].hex[0],
+      c: colorData['4'].cmyk[0],
+      m: colorData['4'].cmyk[1],
+      y: colorData['4'].cmyk[2],
+      k: colorData['4'].cmyk[3],
       spaceId: spaceId
     },
   }).spread(function(color, created){
     console.log(color);
   });
-}
+  callback(null, "yay!");
+};
 
 
-/////// this is not currently working it can find but now save data ///////
+
+/////// API call is made with the image URL retrieved from db ///////
 router.get('/:name', isLoggedIn, function(req, res) {
   db.space.findOne({
     where: {
@@ -135,7 +168,7 @@ router.get('/:name', isLoggedIn, function(req, res) {
     var colorApiUrl = "http://mkweb.bcgsc.ca/color-summarizer/?url=" + url + specialParams;
     request(colorApiUrl, function(error, response, body) {
       colorData = JSON.parse(body).clusters;
-      async.waterfall([color0, color1, color2, color3, color4], function(err, results){
+      async.series([color0, color1, color2, color3, color4], function(err, results){
         console.log('done!');
       });
     });
