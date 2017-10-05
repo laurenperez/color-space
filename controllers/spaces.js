@@ -21,15 +21,15 @@ router.get('/', isLoggedIn, function(req, res) {
   db.space.findAll({
     where: {
       userId: req.user.id
-    },
+    },//can include colors here
   }).then(function(spaces){
-    res.render('spaces/profile', {spaces: spaces});
+    res.render('spaces/profile', {spaces: spaces}); //include colors here
   });
 });
 
 
 /////// upload image to cloudinary and save its url to db ///////
-router.post('/', upload.single('myImage'), function(req, res){
+router.post('/new', upload.single('myImage'), function(req, res){
   cloudinary.uploader.upload(req.file.path, function(result){
     images.push(result.public_id);
     db.user.findById(req.user.id).then(function(user){
@@ -37,7 +37,7 @@ router.post('/', upload.single('myImage'), function(req, res){
           name: req.body.name,
           url: result.secure_url
         })
-        .then(function(image) {
+        .then(function(space) {
           //now delete all the files in the upload folder
           fs.readdir('./uploads', function(err, items) {
           items.forEach(function(file) {
@@ -45,9 +45,9 @@ router.post('/', upload.single('myImage'), function(req, res){
               console.log('Deleted ' + file);
             });
           });
+          res.redirect('/');
         });
-      });
-    res.redirect('/spaces/profile');
+    });
   });
 });
 
@@ -56,7 +56,6 @@ router.post('/', upload.single('myImage'), function(req, res){
 router.get('/new', isLoggedIn, function(req, res) {
   res.render('spaces/new');
 });
-
 
 
 ///// color values from the API are inserted into colors table /////
@@ -177,7 +176,42 @@ router.get('/:name', isLoggedIn, function(req, res) {
 });
 
 
-
+// /////// API call is made with the image URL retrieved from db ///////
+// router.get('/create/:name', isLoggedIn, function(req, res) {
+//   db.space.findOne({
+//     where: {
+//       userId: req.user.id,
+//       name: req.params.name
+//      },
+//   }).then(function(space){
+//     spaceId = space.id;
+//     var spaceUrl = space.url;
+//     var url = spaceUrl.substring(8);
+//     var specialParams = "&precision=medium&json=1";
+//     var colorApiUrl = "http://mkweb.bcgsc.ca/color-summarizer/?url=" + url + specialParams;
+//     request(colorApiUrl, function(error, response, body) {
+//       colorData = JSON.parse(body).clusters;
+//       async.series([color0, color1, color2, color3, color4], function(err, results){
+//         console.log('done!');
+//       });
+//     });
+//     res.render('spaces/create', {space: space});
+//   });
+// });
+//
+//
+// /////// view all data on a spacific space ///////
+// router.get('/:name', isLoggedIn, function(req, res) {
+//   db.space.findOne({
+//     where: {
+//       userId: req.user.id,
+//       name: req.params.name
+//      },
+//   }).then(function(space) {
+//     console.log("Got it!");
+//     res.render('spaces/show', {space: space});
+//   });
+// });
 
 
 module.exports = router;
