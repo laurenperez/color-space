@@ -192,7 +192,37 @@ router.get('/:id', isLoggedIn, function(req, res) {
 });
 
 
-/////// DELETE DRAFT ///////
+///// Find the space to edit /////
+router.get('/:id/edit', function(req, res) {
+  db.space.findById(req.params.id).then(function(space) {
+    if (space) {
+      res.render('spaces/edit', {space: space});
+    } else {
+      res.status(404).render('error');
+    }
+  }).catch(function(err) {
+    res.status(500).render('error');
+  });
+});
+
+
+/////// Edit a space in the DB ///////
+router.put('/:id', function(req, res) {
+  db.space.findById(req.params.id).then(function(space) {
+    if (space) {
+      space.updateAttributes(req.body).then(function() {
+        res.status(200).send({msg: 'success'});
+      });
+    } else {
+      res.status(404).send({msg: 'error'});
+    }
+  }).catch(function(err) {
+    res.status(500).send({msg: 'error'});
+  });
+});
+
+
+/////// Delete a Space ///////
 router.delete('/:id', function(req, res) {
   console.log('in the delete route')
   db.space.findOne({
@@ -212,7 +242,6 @@ router.delete('/:id', function(req, res) {
     res.status(500).send({msg: 'error'});
   });
 });
-
 
 
 

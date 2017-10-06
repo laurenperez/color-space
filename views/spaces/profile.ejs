@@ -3,11 +3,11 @@
 <a href="/">Home</a>
 <a href="/spaces/new">Create New</a>
 
-
 <% spaces.forEach(function(space) { %>
   <div class="well">
     <a href="/spaces/<%= space.id %>"><%= space.name %></a>
     <img src="<%= space.url %>" height="100" width="155">
     <a href="/spaces/<%= space.id %>" class="delete">Delete Space</a>
+    <a href="/spaces/<%= space.id %>/edit" class="edit">Edit Space</a>
   </div>
 <% }); %>
