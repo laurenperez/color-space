@@ -1,4 +1,3 @@
-require('dotenv').config();
 var express = require('express');
 var request = require('request')
 var async = require('async');
@@ -15,6 +14,8 @@ var isLoggedIn = require('../middleware/isLoggedIn');
 var images = [];
 var colorData = null;
 var spaceId;
+
+// router.use(express.static(__dirname + '/public/'));
 
 
 /////// view user profile page ///////
@@ -57,9 +58,6 @@ router.post('/new', upload.single('myImage'), function(req, res){
     });
   });
 });
-
-
-
 
 
 ///// color values from the API are inserted into colors table /////
@@ -155,7 +153,7 @@ function color4(callback) {
 };
 
 
-// /////// API call is made with the image URL retrieved from db ///////
+/////// API call is made with the image URL retrieved from db ///////
 router.get('/create/:id', isLoggedIn, function(req, res) {
   db.space.findOne({
     where: {
@@ -179,18 +177,43 @@ router.get('/create/:id', isLoggedIn, function(req, res) {
 });
 
 
-// /////// view all data on a spacific space ///////
-router.get('/:name', isLoggedIn, function(req, res) {
+/////// view all data on a spacific space ///////
+router.get('/:id', isLoggedIn, function(req, res) {
   db.space.findOne({
     where: {
       userId: req.user.id,
-      name: req.params.name
+      id: req.params.id
      },
   }).then(function(space) {
     console.log("Got it!");
     res.render('spaces/show', {space: space});
   });
 });
+
+
+/////// DELETE DRAFT ///////
+router.delete('/:id', function(req, res) {
+  console.log('in the delete route')
+  db.space.findOne({
+    where: {
+      id:req.params.id
+    },
+  }).then(function(space) {
+    console.log('in the then promise in the delete route');
+    if (space) {
+      space.destroy().then(function() {
+        res.send({msg: 'success'});
+      });
+    } else {
+      res.status(404).send({msg: 'error'});
+    }
+  }).catch(function(err) {
+    res.status(500).send({msg: 'error'});
+  });
+});
+
+
+
 
 
 module.exports = router;

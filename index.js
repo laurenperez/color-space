@@ -55,6 +55,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(express.static(__dirname + '/public/'));
+
 ///////// routes /////////////////
 
 app.get('/', function(req, res) {
