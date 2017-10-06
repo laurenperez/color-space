@@ -23,9 +23,10 @@ router.get('/', isLoggedIn, function(req, res) {
   db.space.findAll({
     where: {
       userId: req.user.id
-    },//can include colors here
+    },
+    include: [db.color]
   }).then(function(spaces){
-    res.render('spaces/profile', {spaces: spaces}); //include colors here
+    res.render('spaces/profile', {spaces: spaces});
   });
 });
 
