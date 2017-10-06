@@ -184,8 +184,9 @@ router.get('/:id', isLoggedIn, function(req, res) {
       userId: req.user.id,
       id: req.params.id
      },
+     include: [db.color]
   }).then(function(space) {
-    console.log("Got it!");
+    console.log(space);
     res.render('spaces/show', {space: space});
   });
 });
