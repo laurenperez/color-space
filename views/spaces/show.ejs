@@ -1,16 +1,15 @@
 <h2>Individual Room Display Page</h2>
 
 <a href="/">Home</a>
+<a href="/auth/logout">Logout</a>
 <a href="/spaces">Back to Profile</a>
+
 
 <hr />
 
-<div class="swatch1" style="background:#0000FF; height: 50px; width: 50px;"></div>
-<div class="swatch2" style="background:#00FF00; height: 50px; width: 50px;"></div>
-<div class="swatch3" style="background:#FF0000; height: 50px; width: 50px;"></div>
-<div class="swatch4" style="background:#0000FF; height: 50px; width: 50px;"></div>
-<div class="swatch5" style="background:#00FF00; height: 50px; width: 50px;"></div>
-
+<% space.colors.forEach(function(color) { %>
+<div class="swatches" style="background:<%= color.hex %>; height: 50px; width: 50px;"></div>
+<% }); %>
 
 <hr />
 
