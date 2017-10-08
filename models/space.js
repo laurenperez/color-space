@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var space = sequelize.define('space', {
     name: DataTypes.STRING,
     url: DataTypes.STRING,
+    note: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
     classMethods: {

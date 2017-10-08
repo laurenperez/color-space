@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/spaces">Back to Profile</a>
-        <a class="nav-item nav-link mr-auto" href="/auth/logout">Logout</a>
+        <a class="nav-item nav-link" href="/auth/logout">Logout</a>
       </div>
     </div>
   </nav>
@@ -19,8 +19,10 @@
 
 <form action="/spaces/<%= space.id %>" class="edit" role="form">
   <div class="form-group">
-  <label for="name">Rename your Space</label>
+  <label for="name">Rename your Space:</label>
   <input type="text" class="form-control"  name="name" placeholder="enter new name...">
-  <input type="submit" class="btn btn-success">
+  <label for="name">Update notes for this space:</label>
+  <input type="text" class="form-control"  name="note" placeholder="notes...">
+  <input type="submit" class="btn btn-light btn-sm edit">
   </div>
 </form>

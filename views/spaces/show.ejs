@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/spaces">Back to Profile</a>
-        <a class="nav-item nav-link mr-auto" href="/auth/logout">Logout</a>
+        <a class="nav-item nav-link" href="/auth/logout">Logout</a>
       </div>
     </div>
   </nav>
@@ -17,9 +17,28 @@
 
 <hr />
 
+
 <% space.colors.forEach(function(color) { %>
-<div class="swatches" style="background:<%= color.hex %>; height: 50px; width: 50px;"></div>
+<div class="container">
+  <div class="color-swatch-container <%= color.hex %>">
+    <div class="color-inner">
+      <div class="color-front">
+        <footer class="details">
+      <p>COLOR  <span><%= color.hex %></span></p>
+        </footer>
+      </div>
+      <div class="color-back">
+        <p>COLOR <%= color.hex %></p>
+        <ul>
+          <li>RGB <span><%= color.r %>,<%= color.g %>,<%= color.b %></span></li>
+          <li>CMYK <span><%= color.c %>,<%= color.m %>,<%= color.y %>,<%= color.k %></span></li>
+          <li>HEX <span><%= color.hex %></span></li>
+        </ul>
+    </div>
+  </div>
+</div>
 <% }); %>
+
 
 <hr />
 

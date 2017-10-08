@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link mr-auto" href="/spaces/new">Create New</a>
-        <a class="nav-item nav-link mr-auto" href="/auth/logout">Logout</a>
+        <a class="nav-item nav-link" href="/auth/logout">Logout</a>
       </div>
     </div>
   </nav>
@@ -21,18 +21,18 @@
   <div class="card-deck">
     <% spaces.forEach(function(space) { %>
       <div class="container-fuid">
-        <div class=" col-sm-6">
-            <div class="card" style="width: 20rem;">
+        <div class=" col-sm-4 col-xsm-12">
+            <div class="card" style="width: 20rem; margin-top: 1rem;">
               <img class="card-img-top" src="<%= space.url %>" alt="Space Inspiration Image">
               <div class="card-body">
                 <h4 class="card-title"><%= space.name %></h4>
                 <% space.colors.forEach(function(color) { %>
-                <div class="swatches" style="background:<%= color.hex %>; height: 30px; width: 30px; display: inline-block;"></div>
+                <div class="swatches" style="background:<%= color.hex %>; height: 3rem; width: 3rem; display: inline-block;"></div>
                 <% }); %>
-                <p class="card-text">Add notes to a space</p>
-                <a href="/spaces/<%= space.id %>" class="btn btn-light">View Space</a>
-                <a href="/spaces/<%= space.id %>/edit" class="btn btn-light edit" role="button">Edit</a>
-                <a href="/spaces/<%= space.id %>" class="btn btn-light delete" role="button">Delete</a>
+                <p class="card-text"><%= space.note %></p>
+                <a href="/spaces/<%= space.id %>" class="btn btn-light btn-sm">View Space</a>
+                <a href="/spaces/<%= space.id %>/edit" class="btn btn-light btn-sm edit" role="button">Edit</a>
+                <a href="/spaces/<%= space.id %>" class="btn btn-light btn-sm delete" role="button">Delete</a>
               </div>
             </div>
           </div>

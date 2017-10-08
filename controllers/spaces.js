@@ -44,7 +44,8 @@ router.post('/new', upload.single('myImage'), function(req, res){
     db.user.findById(req.user.id).then(function(user){
       user.createSpace({
           name: req.body.name,
-          url: result.secure_url
+          url: result.secure_url,
+          note: req.body.note
         })
         .then(function(space) {
           //now delete all the files in the upload folder

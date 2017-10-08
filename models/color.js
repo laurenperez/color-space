@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.color.belongsTo(models.space);
+        models.color.belongsTo(models.space)
       }
     }
   });
