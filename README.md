@@ -1,5 +1,7 @@
 # ColorStory
 
+View hosted app here:  https://coloryourspace.herokuapp.com/
+
 ColorSpace is a design tool for turning your photos into color inspiration for your home.
 You can use images in your personal collection or download and save images from the internet.
 
