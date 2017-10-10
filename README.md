@@ -3,7 +3,7 @@
 ColorSpace is a design tool for turning your photos into color inspiration for your home.
 You can use images in your personal collection or download and save images from the internet.
 
-###How to use this app:
+### How to use this app:
 
 1. Choose a photo with colors you love. Your memories make for great inspiration.
    Don't have any personal photos? Upload images of famous art,
@@ -15,7 +15,7 @@ You can use images in your personal collection or download and save images from 
    take your inspiration with you.
 
 
-###User Stories:
+### User Stories:
 
 1. I want to redecorate my living room using a photo I’ve taken for inspiration.
 
@@ -26,7 +26,7 @@ You can use images in your personal collection or download and save images from 
 4. I want to create color palates for multiple spaces in my home and save them under specific room labels.
 
 
-###Process
+### Process
 
 Day 1 - Day 3
 - User stories were created and basic app functionality was determined
@@ -49,7 +49,7 @@ Day 7 - Day 9
 - Readme file created
 
 
-###Some Technologies Used
+### Some Technologies Used
 
 Async
 Bcrypt
@@ -68,13 +68,13 @@ Postgres Sequel
 
 The homepage will serve to welcome visitors to the site as well as show a picture demo of what the site can do.
 
-###Profile Page
+### Profile Page
 
 ![alt text](/public/img/portfolio-page.png "Portfolio")
 
 The "profile" or portfolio page is the users main dashboard for displaying all created spaces.
 
-###Show Page
+### Show Page
 
 ![alt text](/public/img/show-page.png "Show")
 
