@@ -106,3 +106,17 @@ Associations : Belongs to one Space
 ## API Used
 
 http://mkweb.bcgsc.ca/color-summarizer/
+
+
+## Challenges
+
+- API Call to database data transfer. I had to add a middle page to handle the transition from data sent to the API, returned and values stored in the database.
+- CSS flip animation for each color card was difficult to get working at the proper rate.
+- Adjusting the settings so that the image analysis was more streamlined with the least amount of lag time. 
+
+## Next Steps
+
+- Add a notes section for each color. Maybe allow user to name color.
+- Analyze color by values returned. This would enable me to give the user specific recommendations for which colors are best for accent vs large scale application.
+- Find and match Panetone color equivalents based on values returned.
+- Offer sites where colors can be purchased as paint.
