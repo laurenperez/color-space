@@ -1,4 +1,4 @@
-# ColorStory
+# ColorSpace
 
 View hosted app here:  https://coloryourspace.herokuapp.com/
 
@@ -112,7 +112,7 @@ http://mkweb.bcgsc.ca/color-summarizer/
 
 - API Call to database data transfer. I had to add a middle page to handle the transition from data sent to the API, returned and values stored in the database.
 - CSS flip animation for each color card was difficult to get working at the proper rate.
-- Adjusting the settings so that the image analysis was more streamlined with the least amount of lag time. 
+- Adjusting the settings so that the image analysis was more streamlined with the least amount of lag time.
 
 ## Next Steps
 
