@@ -64,7 +64,7 @@ Postgres Sequel
 
 ## Wireframe Sketches
 
-###Home Page
+### Home Page
 
 ![alt text](/public/img/home-page.png "Home")
 
