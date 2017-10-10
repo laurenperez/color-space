@@ -17,12 +17,16 @@
 
 <hr />
 
-<form enctype="multipart/form-data" action="/spaces/new" method="post">
-  <label for="name">Name your Space:</label>
-  <input type="text" class="form-control"  name="name" placeholder="Kitchen...">
-  <label for="name">Notes about this space:</label>
-  <input type="text" class="form-control"  name="note" placeholder="Considering a rustic theme with pops of color...">
-  <label for="myImage">Upload your Image</label>
-  <input type="file" name="myImage">
-  <input type="submit" class="btn btn-light btn-sm edit">
-</form>
+<div class="container">
+  <div class="form-box">
+    <form enctype="multipart/form-data center-form" action="/spaces/new" method="post">
+      <label for="name">Name your Space:</label>
+      <input type="text" class="form-control"  name="name" placeholder="Kitchen...">
+      <label for="name">Notes about this space:</label>
+      <input type="text" class="form-control"  name="note" placeholder="Considering a rustic theme with pops of color...">
+      <label for="myImage">Upload your Image</label>
+      <input type="file" name="myImage">
+      <input type="submit" class="btn btn-outline-dark btn-sm edit">
+    </form>
+  </div>
+</div>

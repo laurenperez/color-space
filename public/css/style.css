@@ -1,3 +1,69 @@
+body{
+}
+
+.alert {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+.jumbotron {
+  background-color: #fbfcfc;
+  margin: 20px 0 10px 0;
+}
+
+.front-page {
+  margin: 10px 0;
+  border-radius: 1%;
+  background-color: #F8F9FA;
+  height: 100%;
+  width: 100%;
+  color: black;
+  padding: 30px;
+}
+
+.column1 {
+  height: 650px;
+  background-image: url(../img/livingroom-flower.png);
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.column2 {
+  height: 650px;
+}
+
+.column3 {
+  display: inline-block;
+}
+
+.example {
+  height: 350px;
+  margin: 10px;
+}
+
+.card {
+  width: 300px;
+  margin: 20px 0;
+}
+
+
+.card-deck{
+  background-color: #F8F9FA;
+  text-align: center;
+}
+
+.form-box{
+  width: 400px;
+}
+
 .swatches {
   height: 150px;
   width: 150px;
@@ -23,9 +89,18 @@
   backface-visibility: hidden;
   transform: perspective(600px) rotateY(180deg);
   transition: all .25s linear;
-  background-color: white;
+  background-color: #F8F9FA;
   border: 1px solid gray;
-  padding: 5px;
+  padding: 10px;
+}
+
+.color-details{
+  background: white;
+  position: absolute;
+	bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #F8F9FA;
 }
 
 .swatches:hover > .front {

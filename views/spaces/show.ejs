@@ -4,7 +4,7 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" class="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/spaces">Back to Profile</a>
         <a class="nav-item nav-link" href="/auth/logout">Logout</a>
@@ -13,16 +13,22 @@
   </nav>
 </header>
 
-<h2>Individual Room Display Page</h2>
+<h2><%= space.name %></h2>
 
 <hr />
+
+<div>
+<img src="<%= space.url %>" height="100" width="155">
+</div>
 
 <div class="all-swatches">
     <% space.colors.forEach(function(color) { %>
       <div class="swatches">
         <div class="front" style="background:<%= color.hex %>;">
-          <p>COLOR</p>
-          <span><%= color.hex %></span>
+          <footer class="color-details">
+            <h6>COLOR</h6>
+            <span><%= color.hex %></span>
+          </footer>
         </div>
         <div class="back">
           <p>RGB <span><%= color.r %>,<%= color.g %>,<%= color.b %></span></p>
@@ -36,4 +42,42 @@
 
 <hr />
 
-<img src="<%= space.url %>" height="100" width="155">
+
+<div class="card border-dark mb-3" style="max-width: 20rem;">
+  <div class="card-header">Bold Colors</div>
+  <div class="card-body text-dark">
+    <h4 class="card-title">Add richness to your space</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card border-dark mb-3" style="max-width: 20rem;">
+  <div class="card-header">Neutral Colors</div>
+  <div class="card-body text-dark">
+    <h4 class="card-title">Scale well for larger application</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+<div class="card border-dark mb-3" style="max-width: 20rem;">
+  <div class="card-header">Everything Else</div>
+  <div class="card-body text-dark">
+    <h4 class="card-title">Medium depth colors are versitile</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end -->

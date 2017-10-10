@@ -13,7 +13,10 @@
   </nav>
 </header>
 
-<h3>User Profile Page</h3>
+<div class="container">
+  <h3>My Portfolio</h3>
+  <p>Here you can add, edit, or delete your spaces.</p>
+</div>
 
 <hr/>
 
@@ -21,22 +24,46 @@
   <div class="card-deck">
     <% spaces.forEach(function(space) { %>
       <div class="container-fuid">
-        <div class=" col-sm-4 col-xsm-12">
-            <div class="card" style="width: 20rem; margin-top: 1rem;">
+        <div class=" col-sm-4 col-xsm-6">
+            <div class="card">
               <img class="card-img-top" src="<%= space.url %>" alt="Space Inspiration Image">
               <div class="card-body">
                 <h4 class="card-title"><%= space.name %></h4>
                 <% space.colors.forEach(function(color) { %>
-                <div class="swatches" style="background:<%= color.hex %>; height: 3rem; width: 3rem; display: inline-block;"></div>
+                <div class="swatches" style="background:<%= color.hex %>; height: 2.5rem; width: 2.5rem; display: inline-block;"></div>
                 <% }); %>
                 <p class="card-text"><%= space.note %></p>
-                <a href="/spaces/<%= space.id %>" class="btn btn-light btn-sm">View Space</a>
-                <a href="/spaces/<%= space.id %>/edit" class="btn btn-light btn-sm edit" role="button">Edit</a>
-                <a href="/spaces/<%= space.id %>" class="btn btn-light btn-sm delete" role="button">Delete</a>
+                <a href="/spaces/<%= space.id %>" class="btn btn-outline-dark btn-sm">View Space</a>
+                <a href="/spaces/<%= space.id %>/edit" class="btn btn-outline-dark btn-sm edit" role="button">Edit</a>
+                <a href="/spaces/<%= space.id %>" class="btn btn-outline-dark btn-sm delete" role="button">Delete</a>
               </div>
             </div>
           </div>
         </div>
     <% }); %>
+  </div>
+</div>
+
+<div class="container-fluid front-page">
+  <div class="row">
+    <div class="step1 front-page col-med-4 col-sm-4 col-xsm-12">
+      <h2>Step 1</h2>
+      <p>Choose.</p>
+      <p>Choose a photo with colors you love. Click "Create New" to get started by
+          adding spaces to your portfolio</p>
+    </div>
+    <div class="step2 front-page col-med-4 col-sm-4 col-xsm-12">
+      <h2>Step 2</h2>
+      <p>Submit.</p>
+      <p>From the "Create New" page you'll name and upload your photo for analysis. If the photo you
+         want to use is hosted online, you'll need to download and save it to your device.
+         You can even save design notes with your image.</p>
+    </div>
+    <div class="step3 front-page col-med-4 col-sm-4 col-xsm-12">
+      <h2>Step 3</h2>
+      <p>Design.</p>
+      <p>Once created, click "View this Space" to learn more about
+        how to use your new color palate.</p>
+    </div>
   </div>
 </div>

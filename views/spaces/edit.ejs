@@ -17,12 +17,14 @@
 
 <hr />
 
-<form action="/spaces/<%= space.id %>" class="edit" role="form">
-  <div class="form-group">
-  <label for="name">Rename your Space:</label>
-  <input type="text" class="form-control"  name="name" placeholder="enter new name...">
-  <label for="name">Update notes for this space:</label>
-  <input type="text" class="form-control"  name="note" placeholder="notes...">
-  <input type="submit" class="btn btn-light btn-sm edit">
+<div class="container">
+  <div class="form-box">
+    <form action="/spaces/<%= space.id %>" class="edit" role="form">
+      <label for="name">Rename your Space:</label>
+      <input type="text" class="form-control"  name="name" placeholder="enter new name...">
+      <label for="name">Update notes for this space:</label>
+      <input type="text" class="form-control"  name="note" placeholder="notes...">
+      <input type="submit" class="btn btn-outline-dark btn-sm edit">
+    </form>
   </div>
-</form>
+</div>
