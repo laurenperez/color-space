@@ -3,7 +3,7 @@
 ColorSpace is a design tool for turning your photos into color inspiration for your home.
 You can use images in your personal collection or download and save images from the internet.
 
-How to use this app:
+###How to use this app:
 
 1. Choose a photo with colors you love. Your memories make for great inspiration.
    Don't have any personal photos? Upload images of famous art,
@@ -15,7 +15,7 @@ How to use this app:
    take your inspiration with you.
 
 
-User Stories:
+###User Stories:
 
 1. I want to redecorate my living room using a photo I’ve taken for inspiration.
 
@@ -26,19 +26,59 @@ User Stories:
 4. I want to create color palates for multiple spaces in my home and save them under specific room labels.
 
 
+###Process
+
+Day 1 - Day 3
+- User stories were created and basic app functionality was determined
+- Routes and models were mapped
+- Working from a functional auth-boilerplate, I added the models and basic routes
+- Wire frames were constructed and initial Bootstrap columns were created
+- Additional controllers were added for new routes
+- Navigation bar was built
+
+Day 4 - Day 6
+- The API call was added and an additional page and route was added to handle the delayed data return from the API
+- Put and Delete routes were added
+- Bootstrap styling was added to buttons, cards and navigation bar
+- Final bootstrap styles were added to give structure to pages displaying color
+- CSS animation added to display color palate
+
+Day 7 - Day 9
+- Google fonts selected and added to style sheet
+- Final style sheet updates made for bootstrap elements
+- Readme file created
+
+
+###Some Technologies Used
+
+Async
+Bcrypt
+Bootstrap
+Cloudinary
+Express
+EJS
+Postgres Sequel
+
+
 ## Wireframe Sketches
 
-Home Page
+###Home Page
 
 ![alt text](/public/img/home-page.png "Home")
 
-Profile Page
+The homepage will serve to welcome visitors to the site as well as show a picture demo of what the site can do.
+
+###Profile Page
 
 ![alt text](/public/img/portfolio-page.png "Portfolio")
 
-Show Page
+The "profile" or portfolio page is the users main dashboard for displaying all created spaces.
+
+###Show Page
 
 ![alt text](/public/img/show-page.png "Show")
+
+The "show" page is the individual showcase page for each created space. This is where the color palate is on display, along with notes and color values.
 
 
 ## Routes
