@@ -52,6 +52,7 @@ body{
 .card {
   width: 300px;
   margin: 20px 0;
+  display: inline-block;
 }
 
 
@@ -65,15 +66,15 @@ body{
 }
 
 .swatches {
-  height: 150px;
-  width: 150px;
+  height: 180px;
+  width: 180px;
   display: inline-block;
 }
 
 .swatches > .front {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 175px;
+  height: 175px;
   border-radius: 7px;
   backface-visibility: hidden;
   transform: perspective(600px) rotateY(0deg);
@@ -83,8 +84,8 @@ body{
 
 .swatches > .back {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 175px;
+  height: 175px;
   border-radius: 7px;
   backface-visibility: hidden;
   transform: perspective(600px) rotateY(180deg);
@@ -109,4 +110,18 @@ body{
 
 .swatches:hover > .back {
  transform: perspective(600px) rotateY(0deg);
+}
+
+.show-cards {
+  margin: 10px 20px;
+}
+
+.show-image{
+  height: 300px;
+  width: 400px;
+}
+
+.space-notes {
+  height: 100%;
+  width: 400px;
 }
