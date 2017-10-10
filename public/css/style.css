@@ -1,4 +1,10 @@
 body{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
 }
 
 .alert {
@@ -44,9 +50,9 @@ body{
   display: inline-block;
 }
 
-.example {
-  height: 350px;
-  margin: 10px;
+.examples {
+  margin: 10px auto;
+  text-align: center;
 }
 
 .card {
@@ -54,7 +60,6 @@ body{
   margin: 20px 0;
   display: inline-block;
 }
-
 
 .card-deck{
   background-color: #F8F9FA;
@@ -109,7 +114,7 @@ body{
 }
 
 .swatches:hover > .back {
- transform: perspective(600px) rotateY(0deg);
+  transform: perspective(600px) rotateY(0deg);
 }
 
 .show-cards {
@@ -124,4 +129,10 @@ body{
 .space-notes {
   height: 100%;
   width: 400px;
+}
+
+.jb-content {
+  height: 250px;
+  display: inline-block;
+  background-color: white;
 }

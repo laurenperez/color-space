@@ -3,15 +3,11 @@ var router = express.Router();
 var db = require('../models');
 var passport = require('../config/ppConfig');
 
-
-
 ////////// routes ////////////
-
 
 router.get('/signup', function(req, res) {
   res.render('auth/signup');
 });
-
 
 //post route for our signup form
 router.post('/signup', function(req, res) {
@@ -40,11 +36,9 @@ router.post('/signup', function(req, res) {
   });
 });
 
-
 router.get('/login', function(req, res) {
   res.render('auth/login');
 });
-
 
 //added flash to let user know if they successfully logged in or not
 router.post('/login', passport.authenticate('local', {
@@ -54,16 +48,12 @@ router.post('/login', passport.authenticate('local', {
   failureFlash: 'Invalid username and/or password'
 }));
 
-
 //added flash to let user know they logged out
 router.get('/logout', function(req, res) {
   req.logout();
   req.flash('success', 'You have logged out');
   res.redirect('/');
 });
-
-
-
 
 
 module.exports = router;

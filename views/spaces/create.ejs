@@ -13,12 +13,19 @@
   </nav>
 </header>
 
-<h2>Landing page while the API is running</h2>
-
 <hr />
 
-<a href="/spaces/<%= space.id %>">View Details</a>
-
-<hr />
-
-<img src="<%= space.url %>" height="100" width="155">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Your ColorSpace is ready!</h1>
+    <br>
+    <img src="<%= space.url %>" width="300" height="200">
+    <p>
+      <h5><%= space.name %>  <span class="badge badge-secondary">New</span></h5>
+    </p>
+    <hr />
+    <div>
+      <a href="/spaces/<%= space.id %>" class="btn btn-outline-dark btn-lg">View Space &rarr;</a>
+    </div>
+  </div>
+</div>

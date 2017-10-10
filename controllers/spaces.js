@@ -17,7 +17,6 @@ var spaceId;
 
 // router.use(express.static(__dirname + '/public/'));
 
-
 /////// view user profile page ///////
 router.get('/', isLoggedIn, function(req, res) {
   db.space.findAll({
@@ -30,12 +29,10 @@ router.get('/', isLoggedIn, function(req, res) {
   });
 });
 
-
 /////// page with form to create a new space ///////
 router.get('/new', isLoggedIn, function(req, res) {
   res.render('spaces/new');
 });
-
 
 /////// upload image to cloudinary and save its url to db ///////
 router.post('/new', upload.single('myImage'), function(req, res){
@@ -60,7 +57,6 @@ router.post('/new', upload.single('myImage'), function(req, res){
     });
   });
 });
-
 
 ///// color values from the API are inserted into colors table /////
 function color0(callback) {
@@ -154,7 +150,6 @@ function color4(callback) {
   callback(null, "yay!");
 };
 
-
 /////// API call is made with the image URL retrieved from db ///////
 router.get('/create/:id', isLoggedIn, function(req, res) {
   db.space.findOne({
@@ -166,7 +161,7 @@ router.get('/create/:id', isLoggedIn, function(req, res) {
     spaceId = space.id;
     var spaceUrl = space.url;
     var url = spaceUrl.substring(8);
-    var specialParams = "&precision=medium&json=1";
+    var specialParams = "&precision=vlow&json=1";
     var colorApiUrl = "http://mkweb.bcgsc.ca/color-summarizer/?url=" + url + specialParams;
     request(colorApiUrl, function(error, response, body) {
       colorData = JSON.parse(body).clusters;
@@ -177,7 +172,6 @@ router.get('/create/:id', isLoggedIn, function(req, res) {
     res.render('spaces/create', {space: space});
   });
 });
-
 
 /////// view all data on a spacific space ///////
 router.get('/:id', isLoggedIn, function(req, res) {
@@ -193,7 +187,6 @@ router.get('/:id', isLoggedIn, function(req, res) {
   });
 });
 
-
 ///// Find the space to edit /////
 router.get('/:id/edit', function(req, res) {
   db.space.findById(req.params.id).then(function(space) {
@@ -206,7 +199,6 @@ router.get('/:id/edit', function(req, res) {
     res.status(500).render('error');
   });
 });
-
 
 /////// Edit a space in the DB ///////
 router.put('/:id', function(req, res) {
@@ -222,7 +214,6 @@ router.put('/:id', function(req, res) {
     res.status(500).send({msg: 'error'});
   });
 });
-
 
 /////// Delete a Space ///////
 router.delete('/:id', function(req, res) {
@@ -244,8 +235,6 @@ router.delete('/:id', function(req, res) {
     res.status(500).send({msg: 'error'});
   });
 });
-
-
 
 
 module.exports = router;
