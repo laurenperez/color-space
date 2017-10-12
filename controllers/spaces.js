@@ -6,7 +6,7 @@ var db = require('../models');
 var bodyParser = require('body-parser');
 var ejsLayouts = require('express-ejs-layouts');
 var multer = require('multer');
-var upload = multer({dest: '../uploads/'});
+var upload = multer({dest: './uploads/'});
 var cloudinary = require('cloudinary');
 var fs = require('fs');
 var isLoggedIn = require('../middleware/isLoggedIn');
@@ -36,24 +36,25 @@ router.get('/new', isLoggedIn, function(req, res) {
 
 /////// upload image to cloudinary and save its url to db ///////
 router.post('/new', upload.single('myImage'), function(req, res){
-  cloudinary.uploader.upload(req.file.path, function(result){
+  cloudinary.v2.uploader.upload(req.file.path, function(error, result){
+    images = [];
     images.push(result.public_id);
     db.user.findById(req.user.id).then(function(user){
       user.createSpace({
           name: req.body.name,
           url: result.secure_url,
           note: req.body.note
-        })
-        .then(function(space) {
-          //now delete all the files in the upload folder
-          fs.readdir('./uploads', function(err, items) {
-          items.forEach(function(file) {
-              fs.unlink('./uploads/' + file);
-              console.log('Deleted ' + file);
-            });
+      })
+      .then(function(space) {
+        // now delete all the files in the upload folder
+        fs.readdir('./uploads', function(err, items) {
+        items.forEach(function(file) {
+            fs.unlink('./uploads/' + file);
+            console.log('Deleted ' + file);
           });
-          res.redirect('/spaces/create/' + space.id);
         });
+        res.redirect('/spaces/create/' + space.id);
+      });
     });
   });
 });
