@@ -71,15 +71,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .swatches {
-  height: 180px;
-  width: 180px;
+  height: 160px;
+  width: 160px;
   display: inline-block;
 }
 
 .swatches > .front {
   position: absolute;
-  width: 175px;
-  height: 175px;
+  width: 160px;
+  height: 160px;
   border-radius: 7px;
   backface-visibility: hidden;
   transform: perspective(600px) rotateY(0deg);
@@ -89,8 +89,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .swatches > .back {
   position: absolute;
-  width: 175px;
-  height: 175px;
+  width: 160px;
+  height: 160px;
   border-radius: 7px;
   backface-visibility: hidden;
   transform: perspective(600px) rotateY(180deg);
