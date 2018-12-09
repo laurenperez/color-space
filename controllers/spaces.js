@@ -36,9 +36,10 @@ router.get('/new', isLoggedIn, function(req, res) {
 
 /////// upload image to cloudinary and save its url to db ///////
 router.post('/new', upload.single('myImage'), function(req, res){
+  console.log(req.body);
   cloudinary.v2.uploader.upload(req.file.path, function(error, result){
-    images = [];
-    images.push(result.public_id);
+    // images = [];
+    // images.push(result.public_id);
     db.user.findById(req.user.id).then(function(user){
       user.createSpace({
           name: req.body.name,
@@ -50,7 +51,7 @@ router.post('/new', upload.single('myImage'), function(req, res){
         fs.readdir('./uploads', function(err, items) {
         items.forEach(function(file) {
             fs.unlink('./uploads/' + file);
-            console.log('Deleted ' + file);
+            // console.log('Deleted ' + file);
           });
         });
         res.redirect('/spaces/create/' + space.id);
@@ -74,7 +75,7 @@ function color0(callback) {
       spaceId: spaceId
     },
   }).spread(function(color, created){
-    console.log(color);
+    // console.log(color);
   });
   callback(null, "yay!");
 }
@@ -92,7 +93,7 @@ function color1(callback) {
       spaceId: spaceId
     },
   }).spread(function(color, created){
-    console.log(color);
+    // console.log(color);
   });
   callback(null, "yay!");
 }
@@ -110,7 +111,7 @@ function color2(callback) {
       spaceId: spaceId
     },
   }).spread(function(color, created){
-    console.log(color);
+    // console.log(color);
   });
   callback(null, "yay!");
 }
@@ -128,7 +129,7 @@ function color3(callback) {
       spaceId: spaceId
     },
   }).spread(function(color, created){
-    console.log(color);
+    // console.log(color);
   });
   callback(null, "yay!");
 }
@@ -146,7 +147,7 @@ function color4(callback) {
       spaceId: spaceId
     },
   }).spread(function(color, created){
-    console.log(color);
+    // console.log(color);
   });
   callback(null, "yay!");
 };
@@ -167,7 +168,7 @@ router.get('/create/:id', isLoggedIn, function(req, res) {
     request(colorApiUrl, function(error, response, body) {
       colorData = JSON.parse(body).clusters;
       async.series([color0, color1, color2, color3, color4], function(err, results){
-        console.log('done!');
+        // console.log('done!');
       });
     });
     res.render('spaces/create', {space: space});
@@ -183,7 +184,7 @@ router.get('/:id', isLoggedIn, function(req, res) {
      },
      include: [db.color]
   }).then(function(space) {
-    console.log(space);
+    // console.log(space);
     res.render('spaces/show', {space: space});
   });
 });
@@ -218,13 +219,13 @@ router.put('/:id', function(req, res) {
 
 /////// Delete a Space ///////
 router.delete('/:id', function(req, res) {
-  console.log('in the delete route')
+  // console.log('in the delete route')
   db.space.findOne({
     where: {
       id:req.params.id
     },
   }).then(function(space) {
-    console.log('in the then promise in the delete route');
+    // console.log('in the then promise in the delete route');
     if (space) {
       space.destroy().then(function() {
         res.send({msg: 'success'});
